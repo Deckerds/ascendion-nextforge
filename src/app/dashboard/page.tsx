@@ -1,5 +1,10 @@
-import React from "react";
+"use client";
 
-export default function DashboardPage() {
+import React from "react";
+import withAuth from "../../hocs/withAuth";
+
+function DashboardPage() {
   return <div>Dashboard</div>;
 }
+
+export default withAuth(DashboardPage);

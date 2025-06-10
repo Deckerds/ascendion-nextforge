@@ -59,7 +59,10 @@ export const Navbar: React.FC = () => {
     <nav className="bg-white px-4 py-3 shadow">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-6">
-          <div className="cursor-pointer shrink-0">
+          <div
+            onClick={() => router.push("/")}
+            className="cursor-pointer shrink-0"
+          >
             <p className="font-bold text-2xl">
               Next
               <span className="font-bold text-2xl text-red-800">F</span>

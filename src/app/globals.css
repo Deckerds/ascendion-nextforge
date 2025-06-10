@@ -3,3 +3,7 @@
 body {
   font-family: var(--font-open-sans);
 }
+
+@theme {
+  --breakpoint-xxl: 1920px;
+}

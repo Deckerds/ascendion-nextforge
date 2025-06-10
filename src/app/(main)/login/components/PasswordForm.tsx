@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { hashPassword } from "../../../../lib/crypto";
 import Button from "../../../../components/ui/Button";
 import Input from "../../../../components/ui/Input";
+import { toast } from "react-toastify";
 
 interface PasswordFormProps {
   nextStep: () => void;
@@ -24,7 +25,6 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<{ password: string }>();
 
@@ -40,9 +40,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError("password", {
-          message: errorData.error,
-        });
+        toast.error(errorData.error);
         return;
       }
 
@@ -50,9 +48,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
       setToken(responseData.data.token);
       nextStep();
     } catch {
-      setError("password", {
-        message: "Internal server error",
-      });
+      toast.error("Internal server error");
     }
   });
 

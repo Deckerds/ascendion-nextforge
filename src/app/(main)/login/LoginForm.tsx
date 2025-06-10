@@ -38,7 +38,7 @@ export default function LoginForm() {
   }, [expiresAt]);
 
   return (
-    <div className="flex flex-col px-4 py-4 md:py-12 md:px-80 ">
+    <div className="flex flex-col px-4 py-4 md:py-12 md:px-80 2xl:px-96">
       <div className="w-full p-4 md:p-8 rounded-lg shadow">
         <p className="text-sm font-medium mb-1">
           Step {step} of {totalSteps}

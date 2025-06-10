@@ -4,6 +4,7 @@ import { Info } from "lucide-react";
 import Input from "../../../../components/ui/Input";
 import Button from "../../../../components/ui/Button";
 import BasicModal from "../../../../components/ui/BasicModal";
+import { toast } from "react-toastify";
 
 interface UsernameFormProps {
   nextStep: () => void;
@@ -25,7 +26,6 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<{ username: string }>();
 
@@ -39,9 +39,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError("username", {
-          message: errorData.error,
-        });
+        toast.error(errorData.error);
         return;
       }
 
@@ -51,9 +49,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
       setExpiresAt(Date.now() + 60000);
       setOpenModal(true);
     } catch {
-      setError("username", {
-        message: "Internal server error",
-      });
+      toast.error("Internal server error");
     }
   });
 

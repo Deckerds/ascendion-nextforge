@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { generateMfaCode } from "../../../../lib/crypto";
 import Input from "../../../../components/ui/Input";
 import Button from "../../../../components/ui/Button";
+import { toast } from "react-toastify";
 
 interface MFAFormProps {
   token: string;
@@ -16,7 +17,6 @@ const MFAForm: React.FC<MFAFormProps> = ({ token, username }) => {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<{ mfa: string }>({ mode: "onChange" });
 
@@ -30,21 +30,18 @@ const MFAForm: React.FC<MFAFormProps> = ({ token, username }) => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError("mfa", {
-          message: errorData.error,
-        });
+        toast.error(errorData.error);
         return;
       }
 
       const responseData = await response.json();
       if (responseData.data.success) {
+        toast.success("Login successful");
         localStorage.setItem("token", token);
         router.push("/dashboard");
       }
     } catch {
-      setError("mfa", {
-        message: "Internal server error",
-      });
+      toast.error("Internal server error");
     }
   });
 

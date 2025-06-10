@@ -1,0 +1,73 @@
+import { NextRequest, NextResponse } from "next/server";
+import { Transaction, ApiResponse } from "@/types";
+
+const mockTransactions: Transaction[] = [
+  {
+    id: "txn_001",
+    date: "2024-01-15",
+    description: "Online Purchase - Amazon",
+    amount: -89.99,
+    type: "debit",
+    balance: 2310.01,
+  },
+  {
+    id: "txn_002",
+    date: "2024-01-14",
+    description: "Salary Deposit",
+    amount: 2400.0,
+    type: "credit",
+    balance: 2400.0,
+  },
+  {
+    id: "txn_003",
+    date: "2024-01-12",
+    description: "Coffee Shop",
+    amount: -4.5,
+    type: "debit",
+    balance: 0.0,
+  },
+  {
+    id: "txn_004",
+    date: "2024-01-10",
+    description: "ATM Withdrawal",
+    amount: -100.0,
+    type: "debit",
+    balance: 4.5,
+  },
+  {
+    id: "txn_005",
+    date: "2024-01-08",
+    description: "Grocery Store",
+    amount: -45.25,
+    type: "debit",
+    balance: 104.5,
+  },
+  {
+    id: "txn_006",
+    date: "2024-01-05",
+    description: "Freelance Payment",
+    amount: 149.75,
+    type: "credit",
+    balance: 149.75,
+  },
+];
+
+export async function GET(request: NextRequest) {
+  try {
+    // In a real app, you would validate the JWT token here
+    // const token = request.headers.get('Authorization');
+
+    return NextResponse.json<ApiResponse<Transaction[]>>({
+      success: true,
+      data: mockTransactions,
+    });
+  } catch {
+    return NextResponse.json<ApiResponse<null>>(
+      {
+        success: false,
+        error: "Internal server error",
+      },
+      { status: 500 },
+    );
+  }
+}
