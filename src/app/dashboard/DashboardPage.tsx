@@ -36,11 +36,12 @@ export default function Dashboard() {
     fetchTransactions();
   }, []);
 
-  console.log(transactions);
-
   if (loading) {
     return (
-      <div className="h-screen w-full flex items-center justify-center">
+      <div
+        data-testid="initial-loader"
+        className="h-screen w-full flex items-center justify-center"
+      >
         <LoaderCircle size={40} className="animate-spin" />
       </div>
     );

@@ -2,7 +2,8 @@ import React from "react";
 import { cn } from "../../lib/utils";
 import { LoaderCircle } from "lucide-react";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
@@ -39,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
         baseClasses,
         variants[variant],
         sizes[size],
-        className || ""
+        className || "",
       )}
       disabled={disabled || loading}
       {...props}

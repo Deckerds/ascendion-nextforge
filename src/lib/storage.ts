@@ -12,7 +12,7 @@ globalWithStore.__user_store = users;
 globalWithStore.__rate_limits = rateLimits;
 
 export function getUser(username: string): User | undefined {
-  return users.get(username.toLowerCase()); // case-insensitive
+  return users.get(username.toLowerCase());
 }
 
 export function setUser(username: string, user: User): void {

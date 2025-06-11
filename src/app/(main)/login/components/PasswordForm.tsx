@@ -5,7 +5,7 @@ import Button from "../../../../components/ui/Button";
 import Input from "../../../../components/ui/Input";
 import { toast } from "react-toastify";
 
-interface PasswordFormProps {
+export interface PasswordFormProps {
   nextStep: () => void;
   prevStep: () => void;
   timeLeft: number;

@@ -2,7 +2,8 @@ import React from "react";
 import { cn } from "../../lib/utils";
 import { Eye, EyeOff } from "lucide-react";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   icon?: React.ReactNode;
@@ -47,13 +48,14 @@ const Input: React.FC<InputProps> = ({
         <input
           id={inputId}
           type={inputType}
+          data-testid="input-test-id"
           className={cn(
             "block w-full border px-3 py-2 border-gray-300 rounded-md text-sm shadow-sm placeholder:text-sm placeholder-gray-400 focus:outline-none focus:ring-gray-800 focus:border-gray-800",
             error
               ? "border-red-300 focus:border-red-500 focus:ring-red-500"
               : "",
             icon ? "pl-8" : "",
-            className || ""
+            className || "",
           )}
           {...props}
         />

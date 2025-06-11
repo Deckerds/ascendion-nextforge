@@ -6,7 +6,7 @@ import Button from "../../../../components/ui/Button";
 import BasicModal from "../../../../components/ui/BasicModal";
 import { toast } from "react-toastify";
 
-interface UsernameFormProps {
+export interface UsernameFormProps {
   nextStep: () => void;
   secureWord: string;
   setSecureWord: React.Dispatch<React.SetStateAction<string>>;
@@ -95,7 +95,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
         isOpen={openModal}
       >
         <div className="mt-3 space-y-2">
-          <p className="text-base">
+          <p data-testid="secure-word" className="text-base">
             Secure Word: <span className="font-bold">{secureWord}</span>
           </p>
           <p className="text-base"></p>

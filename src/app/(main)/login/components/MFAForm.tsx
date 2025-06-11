@@ -6,7 +6,7 @@ import Input from "../../../../components/ui/Input";
 import Button from "../../../../components/ui/Button";
 import { toast } from "react-toastify";
 
-interface MFAFormProps {
+export interface MFAFormProps {
   token: string;
   username: string;
 }

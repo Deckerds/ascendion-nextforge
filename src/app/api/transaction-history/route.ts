@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { Transaction, ApiResponse } from "@/types";
 
 const mockTransactions: Transaction[] = [
@@ -52,9 +52,9 @@ const mockTransactions: Transaction[] = [
   },
 ];
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    // if we want we can validate the token here
+    // if we want we can validate the token here do it here
 
     return NextResponse.json<ApiResponse<Transaction[]>>({
       success: true,
