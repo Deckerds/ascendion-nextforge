@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Authentication App
+
+A secure multi-step authentication system built with Next.js 14, TypeScript, and Tailwind CSS.
+
+## Features
+
+- ✅ Multi-step authentication flow
+- ✅ Secure word generation with expiration
+- ✅ Multi-Factor Authentication (MFA)
+- ✅ Responsive design with mobile-first approach
+- ✅ Rate limiting and security measures
+- ✅ Transaction dashboard with mock data
+- ✅ Comprehensive unit tests
+
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js App Router
+│   ├── api/            # API routes
+│   ├── login/          # Login pages
+│   ├── dashboard/      # Dashboard page
+│   └── layout.tsx      # Root layout
+├── components/         # Reusable components
+│   ├── ui/            # Basic UI components
+│   └── layout/        # Layout components
+├── hocs/               # Higher order components
+├── lib/               # Utilities and helpers
+├── types/             # TypeScript definitions
+└── __tests__/         # Test files
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.8 or later
+- npm
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Deckerds/ascendion-nextforge.git
+cd ascendion-nextforge
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+```bash
+.env.local
+SECRET_KEY=next_secret_key
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Authentication Flow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Step 1: Username Input
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Enter username
+- System generates secure word (expires in 60 seconds)
+- Rate limiting: 1 request per 10 seconds per user
 
-## Learn More
+### Step 2: Password Input
 
-To learn more about Next.js, take a look at the following resources:
+- Display secure word to user
+- Enter password (hashed client-side)
+- Secure word validation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Step 3: Multi-Factor Authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Enter 6-digit MFA code
+- Time-based code generation
+- 3 attempts before lockout
 
-## Deploy on Vercel
+### Step 4: Dashboard Access
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- View transaction history
+- Secure session management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+- `POST /api/getSecureWord` - Generate secure word
+- `POST /api/login` - Authenticate user
+- `POST /api/verifyMfa` - Verify MFA code
+- `GET /api/transaction-history` - Fetch transactions
+
+## Testing
+
+Run the test suite:
+
+```bash
+# Run all tests
+npm run test
+```
+
+## Demo Instructions
+
+For demo purposes, the MFA code is displayed in the UI. In production
+
+## Technologies Used
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Jest** - Testing framework
+- **React Testing Library** - Component testing
