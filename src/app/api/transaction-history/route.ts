@@ -54,8 +54,7 @@ const mockTransactions: Transaction[] = [
 
 export async function GET(request: NextRequest) {
   try {
-    // In a real app, you would validate the JWT token here
-    // const token = request.headers.get('Authorization');
+    // if we want we can validate the token here
 
     return NextResponse.json<ApiResponse<Transaction[]>>({
       success: true,

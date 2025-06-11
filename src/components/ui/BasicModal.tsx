@@ -25,7 +25,12 @@ const BasicModal: React.FC<ModalProps> = ({
         <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none p-4">
           <div className="flex items-center justify-between">
             <p className="text-xl font-bold">{title}</p>
-            <div onClick={onClose}>
+            <div
+              aria-label="Close modal"
+              data-testid="close-button"
+              tabIndex={0}
+              onClick={onClose}
+            >
               <X size={20} color="#000000" strokeWidth={3} />
             </div>
           </div>

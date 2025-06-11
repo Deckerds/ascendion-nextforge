@@ -39,13 +39,15 @@ const Button: React.FC<ButtonProps> = ({
         baseClasses,
         variants[variant],
         sizes[size],
-        className || "",
+        className || ""
       )}
       disabled={disabled || loading}
       {...props}
     >
       {children}
-      {loading && <LoaderCircle className="animate-spin ms-2" />}
+      {loading && (
+        <LoaderCircle data-testid="spinner" className="animate-spin ms-2" />
+      )}
     </button>
   );
 };

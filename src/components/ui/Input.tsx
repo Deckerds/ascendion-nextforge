@@ -26,7 +26,6 @@ const Input: React.FC<InputProps> = ({
     setShowPassword(!showPassword);
   };
 
-  // Determine the actual input type
   const inputType = type === "password" && showPassword ? "text" : type;
 
   return (
@@ -54,7 +53,7 @@ const Input: React.FC<InputProps> = ({
               ? "border-red-300 focus:border-red-500 focus:ring-red-500"
               : "",
             icon ? "pl-8" : "",
-            className || "",
+            className || ""
           )}
           {...props}
         />

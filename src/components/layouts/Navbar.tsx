@@ -60,6 +60,7 @@ export const Navbar: React.FC = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div
+            data-testid="logo"
             onClick={() => router.push("/")}
             className="cursor-pointer shrink-0"
           >
@@ -74,7 +75,7 @@ export const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-2">
           <Input
             placeholder="Search transactions..."
-            icon={<Search size={14} color="#99a1af" />}
+            icon={<Search data-testid="search" size={14} color="#99a1af" />}
             hideError
           />
           {!isLoginPage && (
@@ -89,7 +90,13 @@ export const Navbar: React.FC = () => {
               <Input
                 placeholder="Search..."
                 autoFocus
-                icon={<Search size={14} color="#99a1af" />}
+                icon={
+                  <Search
+                    data-testid="search_mobile_input"
+                    size={14}
+                    color="#99a1af"
+                  />
+                }
                 onBlur={toggleSearch}
                 className="!py-1"
                 hideError
@@ -98,6 +105,7 @@ export const Navbar: React.FC = () => {
           ) : (
             <div onClick={toggleSearch} className="cursor-pointer">
               <Search
+                data-testid="search_mobile"
                 size={20}
                 color="#000000"
                 strokeWidth={3}
