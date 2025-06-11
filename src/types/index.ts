@@ -12,7 +12,12 @@ export interface Transaction {
   date: string;
   description: string;
   amount: number;
-  type: "credit" | "debit";
+  type:
+    | "Credit"
+    | "Debit"
+    | "Bank Transfer"
+    | "Digital Wallets"
+    | "Cryptocurrency ";
   balance: number;
 }
 

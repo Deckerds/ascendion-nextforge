@@ -7,7 +7,7 @@ const mockTransactions: Transaction[] = [
     date: "2024-01-15",
     description: "Online Purchase - Amazon",
     amount: -89.99,
-    type: "debit",
+    type: "Debit",
     balance: 2310.01,
   },
   {
@@ -15,7 +15,7 @@ const mockTransactions: Transaction[] = [
     date: "2024-01-14",
     description: "Salary Deposit",
     amount: 2400.0,
-    type: "credit",
+    type: "Bank Transfer",
     balance: 2400.0,
   },
   {
@@ -23,7 +23,7 @@ const mockTransactions: Transaction[] = [
     date: "2024-01-12",
     description: "Coffee Shop",
     amount: -4.5,
-    type: "debit",
+    type: "Cryptocurrency ",
     balance: 0.0,
   },
   {
@@ -31,7 +31,7 @@ const mockTransactions: Transaction[] = [
     date: "2024-01-10",
     description: "ATM Withdrawal",
     amount: -100.0,
-    type: "debit",
+    type: "Debit",
     balance: 4.5,
   },
   {
@@ -39,7 +39,7 @@ const mockTransactions: Transaction[] = [
     date: "2024-01-08",
     description: "Grocery Store",
     amount: -45.25,
-    type: "debit",
+    type: "Credit",
     balance: 104.5,
   },
   {
@@ -47,7 +47,7 @@ const mockTransactions: Transaction[] = [
     date: "2024-01-05",
     description: "Freelance Payment",
     amount: 149.75,
-    type: "credit",
+    type: "Digital Wallets",
     balance: 149.75,
   },
 ];

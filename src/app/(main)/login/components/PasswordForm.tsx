@@ -37,23 +37,24 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, hashedPassword, secureWord }),
       });
+      const responseData = await response.json();
 
       if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(errorData.error);
+        toast.error(responseData.error);
         return;
       }
 
-      const responseData = await response.json();
-      setToken(responseData.data.token);
-      nextStep();
+      if (responseData.data) {
+        setToken(responseData.data.token);
+        nextStep();
+      }
     } catch {
       toast.error("Internal server error");
     }
   });
 
   return (
-    <div>
+    <React.Fragment>
       <p className="text-xl font-medium">Password Input Step</p>
       <p className="text-sm text-center">
         Secure word expires in :{" "}
@@ -93,7 +94,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
           </Button>
         </div>
       </form>
-    </div>
+    </React.Fragment>
   );
 };
 

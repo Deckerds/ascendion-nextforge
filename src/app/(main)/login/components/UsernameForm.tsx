@@ -36,18 +36,18 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: data.username }),
       });
+      const responseData = await response.json();
 
       if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(errorData.error);
+        toast.error(responseData.error);
         return;
       }
-
-      const responseData = await response.json();
-      setUsername(data.username);
-      setSecureWord(responseData.data.secureWord);
-      setExpiresAt(Date.now() + 60000);
-      setOpenModal(true);
+      if (responseData.data) {
+        setUsername(data.username);
+        setSecureWord(responseData.data.secureWord);
+        setExpiresAt(Date.now() + 60000);
+        setOpenModal(true);
+      }
     } catch {
       toast.error("Internal server error");
     }
@@ -58,7 +58,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
   };
 
   return (
-    <div>
+    <React.Fragment>
       <p className="text-xl font-medium">Username Input Step</p>
       <form onSubmit={handleUsernameSubmit} className="mt-5 space-y-2">
         <Input
@@ -116,7 +116,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
           </Button>
         </div>
       </BasicModal>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -27,15 +27,14 @@ const MFAForm: React.FC<MFAFormProps> = ({ token, username }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, code: data.mfa }),
       });
+      const responseData = await response.json();
 
       if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(errorData.error);
+        toast.error(responseData.error);
         return;
       }
 
-      const responseData = await response.json();
-      if (responseData.data.success) {
+      if (responseData.data) {
         toast.success("Login successful");
         localStorage.setItem("token", token);
         router.push("/dashboard");
@@ -46,7 +45,7 @@ const MFAForm: React.FC<MFAFormProps> = ({ token, username }) => {
   });
 
   return (
-    <div>
+    <React.Fragment>
       <p className="text-xl font-medium"> MFA Step</p>
       <p className="text-sm text-center">
         Enter the 6-digit MFA code. For demo purposes, use:{" "}
@@ -80,7 +79,7 @@ const MFAForm: React.FC<MFAFormProps> = ({ token, username }) => {
           Submit
         </Button>
       </form>
-    </div>
+    </React.Fragment>
   );
 };
 
