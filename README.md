@@ -106,7 +106,7 @@ npm run test
 
 ## Demo Instructions
 
-For demo purposes, the MFA code is displayed in the UI. In production
+For demo purposes, the MFA code is displayed in the UI.
 
 ## Technologies Used
 
