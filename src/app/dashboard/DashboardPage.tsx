@@ -14,11 +14,17 @@ export default function Dashboard() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch("/api/transaction-history");
+      const token =
+        typeof window !== "undefined" ? localStorage.getItem("token") : null;
+      const response = await fetch("/api/transaction-history", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const responseData = await response.json();
 
       if (!response.ok) {
-        toast.error(responseData.error);
+        toast.error(responseData.error || "Something went wrong!");
         return;
       }
 

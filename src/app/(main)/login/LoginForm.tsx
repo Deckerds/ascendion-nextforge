@@ -14,15 +14,11 @@ export default function LoginForm() {
   const [expiresAt, setExpiresAt] = React.useState<number | null>(null);
 
   const nextStep = () => {
-    if (step < totalSteps) {
-      setStep(step + 1);
-    }
+    setStep((s) => (s < totalSteps ? s + 1 : s));
   };
 
   const prevStep = () => {
-    if (step < totalSteps) {
-      setStep(step - 1);
-    }
+    setStep((s) => (s > 1 ? s - 1 : s));
   };
 
   React.useEffect(() => {
@@ -31,7 +27,10 @@ export default function LoginForm() {
     const timer = setInterval(() => {
       const remaining = Math.max(0, Math.ceil((expiresAt - Date.now()) / 1000));
       setTimeLeft(remaining);
-      if (remaining === 0) setStep(1);
+      if (remaining === 0) {
+        setStep(1);
+        setExpiresAt(null);
+      }
     }, 1000);
 
     return () => clearInterval(timer);

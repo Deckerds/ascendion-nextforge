@@ -11,7 +11,8 @@ const open_sans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "Ascendion App",
-  description: "Web Application Developer",
+  description:
+    "A secure multi-step authentication system built with Next.js 14, TypeScript, and Tailwind CSS.",
 };
 
 export default function MainLayout({

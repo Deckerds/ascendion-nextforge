@@ -40,7 +40,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
       const responseData = await response.json();
 
       if (!response.ok) {
-        toast.error(responseData.error);
+        toast.error(responseData.error || "Something went wrong!");
         return;
       }
 
@@ -81,6 +81,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
             size="md"
             className="w-full"
             variant="outline"
+            type="button"
           >
             Back
           </Button>
@@ -89,6 +90,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({
             type="submit"
             loading={isSubmitting}
             className="w-full"
+            disabled={timeLeft === 0}
           >
             Next
           </Button>

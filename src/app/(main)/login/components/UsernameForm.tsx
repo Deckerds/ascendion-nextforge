@@ -39,7 +39,7 @@ const UsernameForm: React.FC<UsernameFormProps> = ({
       const responseData = await response.json();
 
       if (!response.ok) {
-        toast.error(responseData.error);
+        toast.error(responseData.error || "Something went wrong!");
         return;
       }
       if (responseData.data) {

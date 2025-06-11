@@ -58,10 +58,13 @@ const Input: React.FC<InputProps> = ({
             className || "",
           )}
           {...props}
+          aria-invalid={!!error}
         />
         {type === "password" && (
           <button
             type="button"
+            tabIndex={-1}
+            onMouseDown={(e) => e.preventDefault()}
             className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
             onClick={togglePasswordVisibility}
           >

@@ -6,7 +6,6 @@ export interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
   title: string;
-  closeOnOutsideClick?: boolean;
 }
 
 const BasicModal: React.FC<ModalProps> = ({

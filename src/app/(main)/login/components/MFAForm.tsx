@@ -30,7 +30,7 @@ const MFAForm: React.FC<MFAFormProps> = ({ token, username }) => {
       const responseData = await response.json();
 
       if (!response.ok) {
-        toast.error(responseData.error);
+        toast.error(responseData.error || "Something went wrong!");
         return;
       }
 

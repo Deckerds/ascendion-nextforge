@@ -1,6 +1,6 @@
 import React from "react";
 
-export default async function Home() {
+export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center px-2 py-20">
       <p className="text-2xl font-bold">Welcome to NextForge</p>
