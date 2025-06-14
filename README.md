@@ -54,7 +54,7 @@ npm install
 
 ```bash
 .env.local
-SECRET_KEY=next_secret_key
+SECRET_KEY=your-secret-key-here
 ```
 
 4. Run the development server:
